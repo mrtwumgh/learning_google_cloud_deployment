@@ -35,124 +35,8 @@ DEBUG = os.environ.get('DEBUG', 'False') == "True"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
 
 CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS").split(",")
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_REPLACE_HTTPS_REFERER = True
-CORS_ALLOW_HEADERS = [ "accept", "referer", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-sessionid", "x-requested-with"]
-CORS_EXPOSE_HEADERS = ['Set-Cookie']
-"""
-CORS_ALLOWED_HOSTS = [
-    'example.us',
-    'www.example.us',
-    'example-us.vercel.app',
-    'localhost'
-]
-CORS_ALLOWED_ORIGINS = [
-    'https://localhost',
-    'https://example-us.vercel.app',
-    'https://example.us', 
-    'https://www.example.us', 
-    'https://www.example.us:40001',
-    'https://example.us:40001',
-    'https://0.0.0.0:40001',
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    'localhost', 
-    'www.example.us', 
-    'example.us'
-]
-"""
-"""
-# old testing settings
-CSRF_COOKIE_SECURE = True
-
-ALLOWED_HOSTS = [
-'example.us',
-'www.example.us',
-# 'www.example.us:40001',
-  'example-us.vercel.app'
-]
-
-CORS_ALLOWED_HOSTS = [
-'example.us',
-'www.example.us',
-# 'www.example.us:40001',
-  'example-us.vercel.app'
-]
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-  'https://127.0.0.1:3000',
-  'https://example-us.vercel.app',
-  'https://example.us', 
-  'https://www.example.us', 
-  'https://www.example.us:40001',
-  'https://example.us:40001'
-]
-
-CSRF_TRUSTED_ORIGINS = [
-  'example.us', 
-  'www.example.us', 
-  'vercel.app',
-  'example-us.vercel.app'
-]
-# SESSION_COOKIE_SAMESITE = "strict"
-"""
-"""
-CORS_ALLOWED_HOSTS = [
-  'https://127.0.0.1:3000',
-  'https://example-us.vercel.app',
-  'example.us', 
-  'www.example.us', 
-  'www.example.us:40001'
-]
-
-CSRF_TRUSTED_ORIGINS = [
-  'https://127.0.0.1:3000',
-  'https://example-us.vercel.app',
-  'https://example.us/', 
-  'http://example.us/', 
-  'https://www.example.us/', 
-  'http://www.example.us',
-  'https://www.example.us:40001',
-  'http://www.example.us:40001'
-]
-# CSRF_COOKIE_SAMESITE = None
-CORS_ORIGIN_WHITELIST = (
-  'https://127.0.0.1:3000',
-  'https://example-us.vercel.app',
-  'https://example.us/', 
-  'http://example.us/', 
-  'https://www.example.us/', 
-  'http://www.example.us',
-  'https://www.example.us:40001',
-  'http://www.example.us:40001'
-)
-CSRF_ALLOWED_ORIGINS = [
-  'https://127.0.0.1:3000',
-  'https://example-us.vercel.app',
-  'https://example.us/', 
-  'http://example.us/', 
-  'https://www.example.us/', 
-  'http://www.example.us',
-  'https://www.example.us:40001',
-  'http://www.example.us:40001'
-]
-"""
-# CORS_ALLOW_HEADERS = [ "accept", "referer", "accept-encoding", "authorization", "content-type", "dnt", "origin", "user-agent", "x-csrftoken", "x-requested-with", "csrfmiddlewaretoken"]
-
-
-"""
-CORS_ALLOWED_ORIGINS = [
-    "https://example.us:40001",
-    "https://www.example.us:40001",
-    "https://localhost:40001",
-    "https://127.0.0.1:40001",
-    "https://example-us.vercel.app"
-]
-"""
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(",")
 
 
 
@@ -169,14 +53,15 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'drf_yasg',
+    'corsheaders',
     'reviews',
     'users',
     'comments',
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
