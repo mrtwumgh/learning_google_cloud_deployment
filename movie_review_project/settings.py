@@ -181,7 +181,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SWAGGER_SETTINGS = {
-    'DEFAULT_INFO': 'your_project.urls.api_info',
-    'DEFAULT_SCHEMES': ['https', 'http'],  # Add both schemes here
-}
+# SWAGGER_SETTINGS = {
+#     'DEFAULT_INFO': 'your_project.urls.api_info',
+#     'DEFAULT_SCHEMES': ['https', 'http'],  # Add both schemes here
+# }
