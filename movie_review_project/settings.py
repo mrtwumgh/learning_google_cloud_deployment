@@ -40,8 +40,11 @@ CORS_ALLOW_HEADERS = [ "accept", "referer", "accept-encoding", "authorization", 
 CORS_EXPOSE_HEADERS = ['Set-Cookie']
 CORS_ALLOWED_ORIGINS = os.environ.get("CORS_ALLOWED_ORIGINS").split(",")
 SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True  # Ensure session cookies are only sent over HTTPS
 CSRF_COOKIE_SECURE = True  # Ensure CSRF cookies are only sent over HTTPS
+
+
 
 
 
